@@ -1,5 +1,12 @@
 <template>
     <div>점심 메뉴 리스트</div>
+    <div class="buttons">
+        <div class="right">
+            <router-link :to="{ name: 'lunchmenuadd' }" class="button blue">
+                <span>등록</span>
+            </router-link>
+        </div>
+    </div>
     <div v-if="lunchMenuList.length == 0">
         점심 메뉴가 없습니다.
     </div>
@@ -14,6 +21,7 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import axios from 'axios';
 
 export default {
@@ -43,7 +51,7 @@ export default {
 <style>
 .menu-list {
     width: 500px;
-    margin: 10px auto;
+    margin: 10px 10px;
     padding: 0;
 }
 .menu-item {

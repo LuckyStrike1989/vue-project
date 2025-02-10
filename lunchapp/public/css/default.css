@@ -1,0 +1,29 @@
+.buttons {
+    position: relative;
+    width: 500px; 
+    height: 32px;
+    margin-bottom: 20px;
+    margin: auto auto;
+}
+.buttons > div.right {
+    position: absolute;
+    height: 32px;
+    right: 0;
+}
+.buttons > div > a.button {
+    display: inline-block;
+    min-width: 95px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.buttons > div > .button.blue {
+    color: #fff; 
+    border-color: #0099d2 !important; 
+    background: #0099d2 !important;
+}

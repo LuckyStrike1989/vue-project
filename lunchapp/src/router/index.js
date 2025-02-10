@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LunchMenuListView from '@/views/LunchMenu/LunchMenuListView.vue'
+import LunchMenuAddView from '@/views/LunchMenu/LunchMenuAddView.vue'
+import LunchMenuView from '@/views/LunchMenu/LunchMenuView.vue'
 
 const routes = [
   {
@@ -17,9 +19,20 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/lunchmenu/',
-    name: 'lunchmenu',
-    component: LunchMenuListView
+    path: '/lunchmenu',
+    component: LunchMenuView,
+    children: [
+      {
+        path: '',
+        name: 'lunchmenulist',
+        component: LunchMenuListView
+      },
+      {
+        path: 'add',
+        name: 'lunchmenuadd',
+        component: LunchMenuAddView
+      }
+    ]
   }
 ]
 

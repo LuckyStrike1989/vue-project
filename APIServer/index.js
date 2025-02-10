@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const getDBConnection = require('../app/APIServer/src/db/mariadb/connection')
+const getDBConnection = require('../APIServer/src/db/mariadb/connection')
 
 const app = express();
 const port = 9000;
