@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LunchMenuListView from '@/views/LunchMenu/LunchMenuListView.vue'
 import LunchMenuAddView from '@/views/LunchMenu/LunchMenuAddView.vue'
 import LunchMenuView from '@/views/LunchMenu/LunchMenuView.vue'
+import LunchMenuReadView from '@/views/LunchMenu/LunchMenuReadView.vue'
 
 const routes = [
   {
@@ -30,6 +31,16 @@ const routes = [
       {
         path: 'add',
         name: 'lunchmenuadd',
+        component: LunchMenuAddView
+      },
+      {
+        path: ':seq',
+        name: 'lunchmenuread',
+        component: LunchMenuReadView
+      },
+      {
+        path: ':seq/edit',
+        name: 'lunchmenuedit',
         component: LunchMenuAddView
       }
     ]

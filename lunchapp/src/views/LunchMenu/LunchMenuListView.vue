@@ -13,7 +13,7 @@
     <div v-else>
         점심 메뉴가 {{ lunchMenuList.length }} 개 있습니다.
         <ul class="menu-list">
-            <li class="menu-item" v-for="(lunchMenuItem, index) in lunchMenuList" :key="index">
+            <li class="menu-item" v-for="(lunchMenuItem, index) in lunchMenuList" :key="index" @click="gotoLunchMenuRead(lunchMenuItem)">
                 {{ lunchMenuItem.menu_name }}
             </li>
         </ul>
@@ -23,23 +23,30 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
 
 export default {
     name : 'LunchMenuListView',
-    data() {
-        return {
-            lunchMenuList : []
+    setup() {
+        const router = useRouter();
+        let lunchMenuList = ref([]);
+
+        function gotoLunchMenuRead(lunchMenuItem) {
+            console.log('gotoLunchMenuRead ::: ', lunchMenuItem);
+            router.push({name : 'lunchmenuread', params : {seq : lunchMenuItem.seq}});
         }
-    },
-    methods : {
-        async getLunchMenuList() {
-            try {
-                const result = await axios.get("http://127.0.0.1:9000/api/v1/lunchmenus/");
-                console.log(result);
-                this.lunchMenuList = result.data.data;
-            } catch(err) {
+
+        function getLunchMenuList() {
+            axios.get("http://localhost:9000/api/v1/lunchmenus/").then((res) => {
+                lunchMenuList.value = res.data.data;
+            }).catch((err) => {
                 console.log(err);
-            }
+            });
+        }
+
+        return {
+            lunchMenuList, getLunchMenuList, gotoLunchMenuRead
         }
     },
     mounted() {
