@@ -44,7 +44,7 @@ export default {
             var result = confirm("수정하시겠습니까?");
             if (result) {
                 const lunchMenuItem = { menuName : state.lunchMenuName };
-                axios.put("http://127.0.0.1:9000/api/v1/lunchmenus/"+ route.params.seq, lunchMenuItem).then(() => {
+                axios.put("http://127.0.0.1:9000/api/v1/lunchmenus/"+ route.query.seq, lunchMenuItem).then(() => {
                     router.replace({name : 'lunchmenulist'});
                 }).catch((err) => {
                     console.log(err);
@@ -69,7 +69,7 @@ export default {
         // state.lunchMenuName = "Hello World!!";
 
         function getLunchMenuItem() {
-            axios.get("http://127.0.0.1:9000/api/v1/lunchmenus/" + route.params.seq).then((res) => {
+            axios.get("http://127.0.0.1:9000/api/v1/lunchmenus/" + route.query.seq).then((res) => {
                 state.lunchMenuName = res.data.data.menu_name;
             }).catch((err) => {
                 console.log(err);

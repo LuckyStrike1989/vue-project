@@ -24,7 +24,7 @@ const routes = [
     component: LunchMenuView,
     children: [
       {
-        path: '',
+        path: 'list',
         name: 'lunchmenulist',
         component: LunchMenuListView
       },
@@ -34,12 +34,12 @@ const routes = [
         component: LunchMenuAddView
       },
       {
-        path: ':seq',
+        path: 'view',
         name: 'lunchmenuread',
         component: LunchMenuReadView
       },
       {
-        path: ':seq/edit',
+        path: 'edit',
         name: 'lunchmenuedit',
         component: LunchMenuAddView
       }

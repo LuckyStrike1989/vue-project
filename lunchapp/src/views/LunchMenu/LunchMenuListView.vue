@@ -34,7 +34,7 @@ export default {
 
         function gotoLunchMenuRead(lunchMenuItem) {
             console.log('gotoLunchMenuRead ::: ', lunchMenuItem);
-            router.push({name : 'lunchmenuread', params : {seq : lunchMenuItem.seq}});
+            router.push({name : 'lunchmenuread', query : {seq : lunchMenuItem.seq}});
         }
 
         function getLunchMenuList() {
