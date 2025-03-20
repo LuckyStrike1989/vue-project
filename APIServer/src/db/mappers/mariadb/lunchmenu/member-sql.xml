@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="apiserver.db.mappers.mariadb.lunchmenu.member">  
+    <select id="selectMember">
+        SELECT  *
+        FROM    tb_member
+        WHERE   1=1
+                AND mbr_id = #{id}
+                AND mbr_pw = #{password}
+    </select>
+</mapper>

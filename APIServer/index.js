@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const router = express.Router();
 const getDBConnection = require('../APIServer/src/db/mariadb/connection')
 
@@ -23,8 +24,14 @@ app.use(function (req, res, next) {
 	next();
 });
 
+// Cookie 설정
+app.use(cookieParser());
+
 // 점심 메뉴 연결
 app.use('/api/v1/lunchmenus', require('./src/api/v1/lunchmenu'));
+
+// 사용자 연결
+app.use('/api/v1/member', require('./src/api/v1/member'));
 
 app.listen(port, () => {
     console.log(`APIServer started on port ${port}`);
